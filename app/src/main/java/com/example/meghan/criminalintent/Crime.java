@@ -1,4 +1,9 @@
+package com.example.meghan.criminalintent;
+
 import java.util.UUID;
+import android.support.v4.app.FragmentActivity; //Page 128 of Android Programming, This is from Word Document
+import android.support.v4.app.Fragment;
+
 
 /**
  * Created by Meghan on 9/18/2016.

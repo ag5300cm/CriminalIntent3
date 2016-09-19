@@ -3,21 +3,23 @@ package com.example.meghan.criminalintent;
 import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity; //Page 128 of Android Programming
+import android.support.v4.app.FragmentActivity; //Page 128 of Android Programming, This is from Word Document
 import android.support.v4.app.Fragment;
+
 
 
 // public class CrimeActivity extends AppCompatActivity { //original code
 public class CrimeActivity extends FragmentActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crime);
 
-        //FragmentManager fm = getSupportFragmentManager(); //page 142, maybe code below correct over book code?
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getSupportFragmentManager(); //page 142, maybe code below correct over book code?
+        //android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+
+
         Fragment fragment = fm.findFragmentById(R.id.fragment_container); // page 143
 
         if (fragment == null) { //page 143
@@ -27,6 +29,5 @@ public class CrimeActivity extends FragmentActivity {
                     .commit();
         }
     }
-
 
 }
