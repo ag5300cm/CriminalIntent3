@@ -7,6 +7,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox; //make sure you choose the compoundButton version
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.support.v4.app.FragmentActivity; //Page 128 of Android Programming, This is from Word Document
 import android.support.v4.app.Fragment;
@@ -20,6 +23,8 @@ public class CrimeFragment extends Fragment { //Is a controller that interacts w
     //In GeoQuiz most work done by activity.java methods in this Fragments will do most the work
     private Crime mCrime; //page 139
     private EditText mTitleField; //page 141
+    private Button mDateButton; //page 153
+    private CheckBox mSolvedCheckBox; //153
 
     @Override
     public void onCreate(Bundle savedInstancesState) {
@@ -49,6 +54,29 @@ public class CrimeFragment extends Fragment { //Is a controller that interacts w
                 // This one too
             }
         });
+
+        //Disable button till chapter 12?
+        mDateButton = (Button)v.findViewById(R.id.crime_date); //Page 153
+        mDateButton.setText(mCrime.getDate().toString());
+        mDateButton.setEnabled(false);
+
+        //reference for checkbox, page 154
+        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
+        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //Set the crime's solved property
+                mCrime.setSolved(isChecked);
+            }
+        });
+
+        /*
+        Button landscapeOnlyButton =  (Button)v.findViewById(R.id.landscapeOnlyButton);
+        if (landscapeOnlyButton != null) {
+            //Set it up
+        }
+        */
+
         return v;
     }
 }

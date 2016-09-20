@@ -1,5 +1,6 @@
 <resources>
 
+    <!-- Styles contain attributes that discribe how a widget should look and behave page 154   -->
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
