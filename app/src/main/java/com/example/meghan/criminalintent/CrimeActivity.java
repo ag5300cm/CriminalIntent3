@@ -25,7 +25,9 @@ public class CrimeActivity extends FragmentActivity {
         if (fragment == null) { //page 143
             fragment = new CrimeFragment();
             fm.beginTransaction() //code commits a fragment transaction, used to add/remove/attach/detach/ or replace fragments in fragment list
-                    .add(R.id.fragment_container, fragment)
+                    .add(R.id.fragment_container, fragment) //Code commits a fragment transaction
+                    //.add method, has two parameters a container view ID and the newly created CrimeFragment.
+                    //The container view id is the resource ID fo the FrameLayout that you defined in activity_crime.xml
                     .commit();
         }
     }
