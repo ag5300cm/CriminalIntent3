@@ -1,6 +1,7 @@
 package com.example.meghan.criminalintent;
 
-import android.app.FragmentManager;
+//import android.app.FragmentManager; //Replace by below thanks to Teacher Clara suggestion
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity; //Page 128 of Android Programming, This is from Word Document
