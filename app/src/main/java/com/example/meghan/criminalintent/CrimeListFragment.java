@@ -1,5 +1,6 @@
 package com.example.meghan.criminalintent;
 
+import android.content.Intent; //added by page 193 for summoning another fragemnt
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,12 +41,23 @@ public class CrimeListFragment  extends Fragment { //page 181
         return view;
     }
 
+    @Override //page 201
+    public void onResume() { //onResume() is used to update the RecycleView
+        super.onResume(); //onResume is perferred over onStart() because the list will not be reloaded if every paused
+        updateUI(); //should add any changes to the list.
+    }
+
     private void updateUI() { //Sets up CrimeListFragment's user interface, page 183, 184
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
 
-        mAdapter = new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) { //page 201
+            mAdapter = new CrimeAdapter(crimes); //page 183, 184
+            mCrimeRecyclerView.setAdapter(mAdapter); //page 183, 184
+        } else {
+            mAdapter.notifyDataSetChanged(); //for changes made
+        }
+
     }
 
     private class CrimeHolder extends RecyclerView.ViewHolder //code for list, page 182
@@ -80,9 +92,23 @@ public class CrimeListFragment  extends Fragment { //page 181
 
         @Override //page 191, CrimeHolder is set as the reciever for Click events
         public void onClick(View v) {
-            Toast.makeText(getActivity(),
-                    mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT)
-                    .show();
+            //Starting an activity from a fragment works similar to starting an activity from another activity,
+            //You call the Fragment.startActivity(Intent) method, which calls the corresponding Activity method behind the scenes
+            //Intent intent = new Intent(getActivity(), CrimeActivity.class); //page 193 Will start up the CrimeActivity.java
+            //startActivity(intent);
+
+            //Removed and replaced by above
+            //Toast.makeText(getActivity(),//page 191, CrimeHolder is set as the reciever for Click events
+            //      mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT)
+            //    .show();
+
+            //Creating a new Intent method, page 195 //crime ID is now safely stashed in the intent that belongs to CrimeActivity
+            //However it is CrimeFragment class that needs to retrieve and use the data
+            //Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId()); //getActivity method to access the CrimeActivity's intent directly
+            //startActivity(intent);
+
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId()); //page 209
+            startActivity(intent);
         }
     }
 

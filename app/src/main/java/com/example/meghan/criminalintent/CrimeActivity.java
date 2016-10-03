@@ -1,17 +1,36 @@
 package com.example.meghan.criminalintent;
 
 //import android.app.FragmentManager; //Replace by below thanks to Teacher Clara suggestion
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity; //Page 128 of Android Programming, This is from Word Document
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog; //page 217 get appCompat Dependency File -> Project Structure -> app -> dependences -> com.android.support.appcompat-v7:24:1:0
+
+import java.util.UUID;
 
 
 public class CrimeActivity extends SingleFragmentActivity { //gets info from SingleFragmentActivity page 173, 174
 
+    //Creating a new Intent method, page 195
+    private static final String EXTRA_CRIME_ID = "com.example.meghan.criminalintent.crime_id"; //page 195, page 199 changed from public to private
+    //Creating a new Intent method, page 195 //crime ID is now safely stashed in the intent that belongs to CrimeActivity
+    //However it is CrimeFragment class that needs to retrieve and use the data
+    public static Intent newIntent(Context packageContext, UUID crimeId) {
+        Intent intent = newIntent(packageContext, CrimeActivity.class);
+        intent.putExtra(EXTRA_CRIME_ID, crimeId);
+        return intent;
+    }
+
     @Override
-    protected Fragment createFragment() {
-        return new CrimeFragment();
+    protected Fragment createFragment() {//gets info from SingleFragmentActivity page 173, 174
+        //return new CrimeFragment();
+
+        //CrimeActivity needs to know plenty about CrimeFragment, including that is has a newInstance(UUID) method. But Fragments do not need to know about activities
+        UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID); //Page 199,
+        return CrimeFragment.newInstance(crimeId);
     }
 }
 
