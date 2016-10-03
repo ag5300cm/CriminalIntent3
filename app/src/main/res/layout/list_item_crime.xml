@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- Page 187 checkbox alignn upper right corner?? -->
+<!-- In RelativeLayout android:layout_height="wrap_content" was match_parent, caused one crime per screen error -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
