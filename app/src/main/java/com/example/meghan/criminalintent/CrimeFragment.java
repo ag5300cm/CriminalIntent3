@@ -97,8 +97,8 @@ public class CrimeFragment extends Fragment { //Is a controller that interacts w
 
         //Disable button till chapter 12?
         mDateButton = (Button)v.findViewById(R.id.crime_date); //Page 153
-        //updateDate(); //page 231, see line below? TODO should be this line, not the one below.
-        updateDate().setText(mCrime.getDate().toString()); // page 230 Refactored from mDateButton
+        updateDate(); //page 231, see line below
+        //updateDate().setText(mCrime.getDate().toString()); // page 230 Refactored from mDateButton
         //mDateButton.setEnabled(false);
         //removed above, replaced by below
         mDateButton.setOnClickListener(new View.OnClickListener() { //page 220, this shows DatePickerFragment when the date button is pressed
@@ -143,13 +143,13 @@ public class CrimeFragment extends Fragment { //Is a controller that interacts w
             Date date = (Date) data
                     .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
-            updateDate().setText(mCrime.getDate().toString());
+            updateDate(); //was formally mDateButton.setText(mCrime.getDate().toString());
         }
     }
 
-    private Button updateDate() {
-        return mDateButton; //page 230, 231
-        //return mDateButton.setText(mCrime.getDate().toString()); //Should be this TODO
+    private void updateDate() {
+        //return mDateButton; //page 230, 231
+        mDateButton.setText(mCrime.getDate().toString()); //removed return part
     }
 
 }

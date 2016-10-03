@@ -24,12 +24,12 @@ public class CrimeLab {
         return sCrimeLab;
     }
 
-    //Why did it show all ones??? TODO find out
+
     private CrimeLab(Context context) { //page 171
         mCrimes = new ArrayList<>(); //regular Java array to store the list elements
         for (int i = 0; i < 100; i++) { //model layer, adding 100 crimes to list
             Crime crime = new Crime();
-            crime.setTitle("Crime #" + 1);
+            crime.setTitle("Crime #" + i); //Had 1, caused error for all to be 1. need to have "i".
             crime.setSolved(i % 2 == 0); //Everyother crime is solved in testing code
             mCrimes.add(crime);
         }

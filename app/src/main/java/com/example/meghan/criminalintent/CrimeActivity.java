@@ -19,7 +19,7 @@ public class CrimeActivity extends SingleFragmentActivity { //gets info from Sin
     //Creating a new Intent method, page 195 //crime ID is now safely stashed in the intent that belongs to CrimeActivity
     //However it is CrimeFragment class that needs to retrieve and use the data
     public static Intent newIntent(Context packageContext, UUID crimeId) {
-        Intent intent = newIntent(packageContext, CrimeActivity.class);
+        Intent intent = new Intent(packageContext, CrimeActivity.class);
         intent.putExtra(EXTRA_CRIME_ID, crimeId);
         return intent;
     }
