@@ -17,4 +17,10 @@
         app:showAsAction="ifRoom|withText" />
     <!--android:icon="@android:drawable/ic_menu_add"  removed on page 243 for image added-->
 
+    <!--page 250, subtitle will display the number of crimes in CriminalIntent-->
+    <item
+        android:id="@+id/menu_item_show_subtitle"
+        android:title="@string/show_subtitle"
+        app:showAsAction="ifRoom" />
+
 </menu>
