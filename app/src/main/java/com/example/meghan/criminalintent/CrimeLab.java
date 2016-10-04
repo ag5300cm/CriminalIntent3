@@ -27,15 +27,23 @@ public class CrimeLab {
 
     private CrimeLab(Context context) { //page 171
         mCrimes = new ArrayList<>(); //regular Java array to store the list elements
-        for (int i = 0; i < 100; i++) { //model layer, adding 100 crimes to list
+
+        /* //removed on page 247, because can now add crimes to list
+        for (int i = 0; i < 100; i++) { //model layer, adding 100 crimes to list //page 171
             Crime crime = new Crime();
             crime.setTitle("Crime #" + i); //Had 1, caused error for all to be 1. need to have "i".
             crime.setSolved(i % 2 == 0); //Everyother crime is solved in testing code
             mCrimes.add(crime);
         }
+        */
     }
 
-    public List<Crime> getCrimes() {
+    //The user presses the Plus sysmbol in toolbar, they can add the crime themselves
+    public void addCrime(Crime c) { //page 247, a new instances of a crime.
+        mCrimes.add(c);
+    }
+
+    public List<Crime> getCrimes() { //page 171
         return mCrimes;
     }
 

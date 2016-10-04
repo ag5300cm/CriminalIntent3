@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -27,6 +30,13 @@ public class CrimeListFragment  extends Fragment { //page 181
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
 
+    @Override //page 244, 245 This is responsible for calling Fragment.onCreateOptionsMenu(Menu, MenuInflater)
+               // when the activity receives its onCreateOptionsMenu(_) callback from the OS.
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstancesState) {
 
@@ -46,6 +56,29 @@ public class CrimeListFragment  extends Fragment { //page 181
     public void onResume() { //onResume() is used to update the RecycleView
         super.onResume(); //onResume is perferred over onStart() because the list will not be reloaded if every paused
         updateUI(); //should add any changes to the list.
+    }
+
+    @Override //page 244, when
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //when you call MenuInflater.inflate(int, menu) and pass in the resource ID of your menu file. This populates
+            //the menu instance with the items defined in your file
+        super.onCreateOptionsMenu(menu, inflater); //superclass implementation, that way any fuctionality defined by the superclass will still work.
+        inflater.inflate(R.menu.fragment_crime_list, menu);
+    }
+
+    @Override //page 248
+    public boolean onOptionsItemSelected(MenuItem item) { //getting Toolbar menu to bring up where you write in crimes
+        switch (item.getItemId()) {
+            case R.id.menu_item_new_crime:
+                Crime crime = new Crime(); //Creating a new crime
+                CrimeLab.get(getActivity()).addCrime(crime);  //adding the crime to the list
+                Intent intent = CrimePagerActivity
+                        .newIntent(getActivity(), crime.getId());
+                startActivity(intent);
+                return true; //Should return true to show no further processing is necessary
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void updateUI() { //Sets up CrimeListFragment's user interface, page 183, 184

@@ -7,15 +7,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager; //This where I add RootView? page 207
+import android.support.v4.view.ViewPager; //This where I add RootView? page 207, NO it should be in .xml where relative layout is.
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by Meghan on 10/2/2016.
- */
-public class CrimePagerActivity extends FragmentActivity { //superclass is FragmentActivity, page 206, 207
+//So, turn to Chapter 12. Every time CrimePagerActivity is mentioned, substitute your existing CrimeActivity class. Word Document lab 6
+//public class CrimePagerActivity extends FragmentActivity { //superclass is FragmentActivity, page 206, 207
+public class CrimePagerActivity extends AppCompatActivity { //page 237, this means you can use AppCompatActivity support fragments
+    //TODO should I also change CrimeActivity to AppCompatActivity too?
 
     private static final String EXTRA_CRIME_ID = "com.example.meghan.android.criminalintent.crime_id"; //page 209
 

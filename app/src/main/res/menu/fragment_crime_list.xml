@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- page 239, right click res -> new -> android resource file, change Resourse type to Menu
+    We should be setting up stuff for a toolbar on the app-->
+
+<!-- page 241, 242, 243 In res -> drawable -> new -> Image Asset; In Asset Type choose Action Bar and Tab Icons
+     look for a plus sign in clip art options, name it ic_menu_add -> Finish. This is an image added so we do not
+      have to get each android phone type and decide how those images will connect to this program. -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/menu_item_new_crime"
+        android:icon="@drawable/ic_menu_add"
+        android:title="@string/new_crime"
+        app:showAsAction="ifRoom|withText" />
+    <!--android:icon="@android:drawable/ic_menu_add"  removed on page 243 for image added-->
+
+</menu>

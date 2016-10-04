@@ -17,7 +17,8 @@
 
         <activity
             android:name=".CrimePagerActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:parentActivityName=".CrimeListActivity" >  <!-- page 248, Easy way to add Up button -->
         </activity>
     </application>
 
