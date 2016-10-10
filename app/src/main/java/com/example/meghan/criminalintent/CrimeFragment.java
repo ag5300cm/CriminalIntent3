@@ -71,6 +71,14 @@ public class CrimeFragment extends Fragment { //Is a controller that interacts w
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId); //page 196
     }
 
+    @Override //page 265, Crime instances get modified in CrimeFragment, and will need to be written out when CrimeFragment is done.
+    public void onPause() { //updates CrimeLab's copy of your Crime.
+        super.onPause();
+
+        CrimeLab.get(getActivity())
+                .updateCrime(mCrime);
+    }
+
     @Override //page 140
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstancesState) {

@@ -17,14 +17,22 @@ public class Crime {
     private boolean mSolved; //If the crime is solved
 
     public Crime() {
+        this(UUID.randomUUID());  //page 268
+
         // Generate unique identifier
-        mId = UUID.randomUUID();
+        // mId = UUID.randomUUID();
+        //mDate = new Date();
+    }
+
+    public Crime(UUID id) { //page 268, a constructor to help return the appropriate UUID id
+        mId = id;
         mDate = new Date();
     }
 
     public  UUID getId() {
         return mId;
     }
+
 
     public String getTitle() {
         return mTitle;

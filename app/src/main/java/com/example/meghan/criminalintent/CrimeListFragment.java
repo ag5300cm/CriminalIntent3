@@ -132,6 +132,7 @@ public class CrimeListFragment  extends Fragment { //page 181
             mAdapter = new CrimeAdapter(crimes); //page 183, 184
             mCrimeRecyclerView.setAdapter(mAdapter); //page 183, 184
         } else {
+            mAdapter.setCrimes(crimes); //page 271, If the back button is press should still keep data.
             mAdapter.notifyDataSetChanged(); //for changes made
         }
 
@@ -219,6 +220,10 @@ public class CrimeListFragment  extends Fragment { //page 181
         @Override //page 183
         public int getItemCount() {
             return mCrimes.size();
+        }
+
+        public void setCrimes(List<Crime> crimes) { //Page 271, to refresh the view of CrimeLab too.
+            mCrimes = crimes;
         }
     }
 }
