@@ -6,7 +6,13 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    >
+              >
+<!--page 293, to include a xml file in another...doesn't really show that well.-->
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/view_camera_and_title"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,6 +55,26 @@
                       android:text="@string/crime_solved_label"
             />
     </LinearLayout>
+
+    <!-- page 274 buttons for suspect and send crime report-->
+
+    <Button
+        android:id="@+id/crime_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/crime_report_text"
+        />
+
+    <Button
+        android:id="@+id/crime_suspect"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/crime_suspect_text"
+        />
 
 </LinearLayout>
 

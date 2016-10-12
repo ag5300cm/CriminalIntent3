@@ -4,9 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 
 import com.example.meghan.criminalintent.CrimeDbSchema.CrimeTable; //page 263, 264, used ALT + Enter to inport on CrimeTable
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -122,6 +124,20 @@ public class CrimeLab {
         }
     }
 
+    //CrimeLab is responsible for everything related to persisting data in CriminalIntent, Add a getPhotoFile(Crime) method to CrimeLab that does this
+    //This code does not create any files on the filesystem. It only returns File objects that point to the right locations.
+    public File getPhotoFile(Crime crime) { //page 297, find where the photos should live.
+        File externalFilesDir = mContext //Code preforms one check: it verifies that there is external storage to save them to.
+                .getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        if (externalFilesDir == null) {  //If there is no external storage, getExternalFilesDir(String) will return null, and so will this method.
+            return null;
+        }
+
+        return new File(externalFilesDir, crime.getPhotoFilename());
+    }
+
+
     public void updateCrime(Crime crime) { //page 265
         String uuidString = crime.getId().toString(); //pass in the table name you want
         ContentValues values = getContentValues(crime); //and the values
@@ -137,9 +153,10 @@ public class CrimeLab {
         values.put(CrimeTable.Cols.UUID, crime.getId().toString()); //page 263, 264, used ALT + Enter to inport on CrimeTable, import com.example.meghan.criminalintent.CrimeDbSchema.CrimeTable;
         values.put(CrimeTable.Cols.TITLE, crime.getTitle()); //Every column is here except for _id, which is automaticlly created for you
         values.put(CrimeTable.Cols.DATE, crime.getDate().getTime());
-        values.put(CrimeTable.Cols.SOLVED, crime.isSolved() ? 1: 0);
+        values.put(CrimeTable.Cols.SOLVED, crime.isSolved() ? 1: 0); //page 263, 264,
+        values.put(CrimeTable.Cols.SUSPECT, crime.getSuspect()); //page 277,
 
-        return values;
+        return values; //page 263, 264,
     }
 
     //To insert crimes, so the code that adds Crime to CrimeLab when you press the New Crime

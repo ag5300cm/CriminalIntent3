@@ -15,6 +15,7 @@ public class Crime {
     private String mTitle;
     private Date mDate; //The time the crime occured; //Used Option+Return or ALt+Enter to import the date class
     private boolean mSolved; //If the crime is solved
+    private String mSuspect; //page 276, Will hold the name of the suspect.
 
     public Crime() {
         this(UUID.randomUUID());  //page 268
@@ -58,4 +59,18 @@ public class Crime {
     public void setSolved(boolean solved) {
         mSolved = solved;
     }
+
+    public String getSuspect() { //page 276, gets suspect
+        return mSuspect;
+    }
+
+    public void setSuspect(String suspect) { //page 276, holds the name of the suspect
+        mSuspect = suspect;
+    }
+
+    //Adding a method to Crime.java to get a well-known filename
+    public String getPhotoFilename() { //page 297, Crime.getPhotoFilename() will not know what folder the photo will be stored in.
+        return "IMG_" + getId().toString() + ".jpg"; //However, the filename will be unique, since it is based on the Crime's ID
+    }
+
 }

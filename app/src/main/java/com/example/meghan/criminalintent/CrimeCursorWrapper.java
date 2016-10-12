@@ -21,11 +21,13 @@ public class CrimeCursorWrapper extends CursorWrapper { //page 267, code will be
         String title = getString(getColumnIndex(CrimeTable.Cols.TITLE));
         long date = getLong(getColumnIndex(CrimeTable.Cols.DATE));
         int isSolved = getInt(getColumnIndex(CrimeTable.Cols.SOLVED)); //page 268
+        String suspect = getString(getColumnIndex(CrimeTable.Cols.SUSPECT)); //page 277, adding a new part to display table
 
         Crime crime = new Crime(UUID.fromString(uuidString)); //page 268
         crime.setTitle(title);
         crime.setDate(new Date(date));
-        crime.setSolved(isSolved != 0);
+        crime.setSolved(isSolved != 0); //page 268
+        crime.setSuspect(suspect); //page 277, adding a new part to display table
 
         return crime; //page 268
         //return null; //page 268

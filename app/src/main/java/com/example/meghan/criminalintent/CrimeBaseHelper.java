@@ -28,12 +28,14 @@ public class CrimeBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //page 260, 261, place cursor on CrimeTable and press ALT + ENTER,
         // (ALT + ENTER), add import for import com.example.meghan.criminalintent.CrimeDbSchema.CrimeTable; //page 260
-        db.execSQL("create table" + CrimeTable.NAME + "(" + //page 260, 261
+        // Need that space,     \/ , or will cause error!!!
+        db.execSQL("create table " + CrimeTable.NAME + "(" +  //page 260, 261
                 "_id integer primary key autoincrement, " +
                 CrimeTable.Cols.UUID + ", " +
                 CrimeTable.Cols.TITLE + ", " +
                 CrimeTable.Cols.DATE + ", " +
-                CrimeTable.Cols.SOLVED +
+                CrimeTable.Cols.SOLVED + ", " + //page 260, 261
+                CrimeTable.Cols.SUSPECT + //page 276, 277, addind a column in CrimeBaseHelper
                 ")"
                 );
 

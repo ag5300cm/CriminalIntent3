@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.meghan.criminalintent">
 
+    <!--298, 299, Requests permission to read external storage for older android types (older than KitKat or API 19) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+                     android:maxSdkVersion="18"
+                     />
+
+    <!-- page 304, To declare that we use the camera, Google Play store to refuse to install your app a <uses-feature> tag to AndroidManifest.xml -->
+    <!--By default, declaring that you use a feature means that your app will not work correctly at all without that feature. This is not the
+          case for CriminalIntent, because of calling resolveActivity(_) to check for a working camera app. Then disable button if not found. -->
+    <uses-feature android:name="android.hardware.camera"
+                  android:required="false"
+                  /> <!--The android:required="false" handles the situation. Telling Android that your app can work fine without the camera -->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
