@@ -11,6 +11,8 @@ import android.support.v7.app.AlertDialog; //page 217 get appCompat Dependency F
 
 import java.util.UUID;
 
+//Wow so much done.
+
 //So, turn to Chapter 12. Every time CrimePagerActivity is mentioned, substitute your existing CrimeActivity class. Word Document lab 6
 public class CrimeActivity extends SingleFragmentActivity { //gets info from SingleFragmentActivity page 173, 174
 
